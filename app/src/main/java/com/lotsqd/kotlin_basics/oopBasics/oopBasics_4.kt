@@ -8,7 +8,8 @@ interface Driveable{
     }
 }
 
-open class Car(brand: String = "Unknown", model: String = "Unknown", override val maxSpeed: Int): Driveable{
+// the typo is a necessity, DON'T fix it unless you want to deal with redeclaration
+open class Carr(brand: String = "Unknown", model: String = "Unknown", override val maxSpeed: Int): Driveable{
     open var range: Double = 100.0
 
     fun extendRange(amount: Double) {
@@ -22,7 +23,7 @@ open class Car(brand: String = "Unknown", model: String = "Unknown", override va
     }
 }
 
-class ElectricCar(brand: String = "Unknown", model: String = "Unknown", batteryLevel: Double, maxSpeed: Int) : Car(brand, model, maxSpeed) {
+class ElectricCar(brand: String = "Unknown", model: String = "Unknown", batteryLevel: Double, maxSpeed: Int) : Carr(brand, model, maxSpeed) {
     override var range = batteryLevel * 5.5
 
     var chargerType: String = "E24"
@@ -41,7 +42,7 @@ class ElectricCar(brand: String = "Unknown", model: String = "Unknown", batteryL
 }
 
 fun main() {
-    val aCar = Car("Alpha Romeo", "S129", 255)
+    val aCar = Carr("Alpha Romeo", "S129", 255)
     val aECar = ElectricCar("Audi", "R8 e-tron", 180.0, 270)
 
     aCar.brake()
